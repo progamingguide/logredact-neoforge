@@ -1,25 +1,57 @@
+# Log Redact
 
-Installation information
-=======
+Log Redact is a small **server-side NeoForge mod** that automatically redacts sensitive information from Minecraft server logs.
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+It replaces values like **IP addresses, player UUIDs, and world coordinates** before they are printed to the console or written to `latest.log`, allowing logs to be shared safely without leaking private data.
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## What it does
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+* Redacts sensitive data **before logs reach stdout or log files**
+* Preserves normal log structure, formatting, and log levels
+* Works without custom `log4j2.xml` configuration
+* Does **not** drop or suppress log lines — only rewrites sensitive parts
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+## Example
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+**Before**
+
+```
+UUID of player progamingguide is c449f9e9-16c6-40ad-89e1-dd866d89b649
+progamingguide[/195.62.90.242:35904] logged in with entity id 50 at (8.30, 136.0, -6.41)
+```
+
+**After**
+
+```
+UUID of player progamingguide is [REDACTED_UUID]
+progamingguide/[[REDACTED_IP]:35904] logged in with entity id 50 at ([REDACTED_COORDS])
+```
+
+## Why this mod exists
+
+Log4j2 layout-based redaction (via `log4j2.xml`) is unreliable or unsupported in modern NeoForge setups.
+External stdout piping also causes buffering issues in environments like Pterodactyl.
+
+This mod solves the problem by intercepting log events **inside the logging pipeline itself**, ensuring redaction is reliable and immediate.
+
+## Supported redactions
+
+* IPv4 and IPv6 addresses
+* Player UUIDs
+* Coordinate triples `(x, y, z)`
+
+## Requirements
+
+* Minecraft **1.21.x**
+* **NeoForge**
+* Server-side only (no client installation required)
+
+## Intended use
+
+* Dedicated servers
+* Log streaming to Discord or admin panels
+* Sharing logs for debugging or support without exposing private data
+
+## License
+
+MIT
