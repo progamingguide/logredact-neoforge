@@ -1,0 +1,13 @@
+{
+  "itemGroup.logredact": "Example Mod Tab",
+  "block.logredact.example_block": "Example Block",
+  "item.logredact.example_item": "Example Item",
+
+  "logredact.configuration.title": "Log Redact Configs",
+  "logredact.configuration.section.logredact.common.toml": "Log Redact Configs",
+  "logredact.configuration.section.logredact.common.toml.title": "Log Redact Configs",
+  "logredact.configuration.items": "Item List",
+  "logredact.configuration.logDirtBlock": "Log Dirt Block",
+  "logredact.configuration.magicNumberIntroduction": "Magic Number Text",
+  "logredact.configuration.magicNumber": "Magic Number"
+}
