@@ -16,8 +16,8 @@ It replaces values like **IP addresses, player UUIDs, and world coordinates** be
 **Before**
 
 ```
-UUID of player progamingguide is c449f9e9-16c6-40ad-89e1-dd866d89b649
-progamingguide[/195.62.90.242:35904] logged in with entity id 50 at (8.30, 136.0, -6.41)
+UUID of player Steve is c789f9e9-16c6-40ad-89e1-dd656d89b649
+Steve[/194.62.89.122:35904] logged in with entity id 50 at (8.30, 136.0, -6.41)
 ```
 
 **After**
