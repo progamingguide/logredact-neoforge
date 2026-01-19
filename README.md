@@ -23,8 +23,8 @@ Steve[/194.62.89.122:35904] logged in with entity id 50 at (8.30, 136.0, -6.41)
 **After**
 
 ```
-UUID of player progamingguide is [REDACTED_UUID]
-progamingguide/[[REDACTED_IP]:35904] logged in with entity id 50 at ([REDACTED_COORDS])
+UUID of player Steve is [REDACTED_UUID]
+Steve/[[REDACTED_IP]:35904] logged in with entity id 50 at ([REDACTED_COORDS])
 ```
 
 ## Why this mod exists
